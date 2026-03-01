@@ -46,7 +46,7 @@ export function calculateParameterRange(param: Parameter): {
 
   // Special handling for values that should round up to next nice range
   // e.g., 94 -> 100, 2.7 -> 10 (since 2.7 is closer to 10 than 5)
-  if (referenceValue > maxValue * 0.9) {
+  if (referenceValue > maxValue * 0.5) {
     if (rangeMultiplier === 1) {
       rangeMultiplier = 2;
     } else if (rangeMultiplier === 2) {

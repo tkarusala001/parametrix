@@ -19,7 +19,7 @@ import { useMode } from '@/contexts/ModeContext';
 
 export function HistoryView() {
   const [searchQuery, setSearchQuery] = useState('');
-  const [viewMode, setViewMode] = useState<'list' | 'visual'>('visual');
+  const [viewMode, setViewMode] = useState<'list' | 'visual'>('list');
   const [editingConversation, setEditingConversation] =
     useState<Conversation | null>(null);
   const [newTitle, setNewTitle] = useState('');

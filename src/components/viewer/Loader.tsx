@@ -23,7 +23,7 @@ const Loader = ({ message }: Props) => {
           setChangingMessage('Rendering');
         }, 200);
       }
-    }, 4000);
+    }, 2000);
 
     // CHANGE TAB TITLE
     document.title = 'Loading model.';
