@@ -93,7 +93,7 @@ export function ColorPicker() {
       </PopoverTrigger>
       <PopoverContent
         align="start"
-        className="w-auto rounded-md border-none bg-adam-neutral-800 p-3 shadow-md"
+        className="w-auto rounded-md border-none bg-adam-neutral-800 p-4 shadow-md"
         style={{ width: popoverWidth }}
       >
         <div className="flex flex-col gap-3">

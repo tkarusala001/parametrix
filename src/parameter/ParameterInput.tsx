@@ -44,7 +44,7 @@ export function ParameterInput({
 
   if (!paramState.type || paramState.type === 'number') {
     return (
-      <div className="grid w-full grid-cols-[70px_1fr] items-center gap-3">
+      <div className="grid w-full grid-cols-[80px_1fr] items-center gap-3">
         <Label
           className="overflow-hidden text-ellipsis text-xs font-normal text-adam-neutral-300"
           htmlFor={paramState.name}
