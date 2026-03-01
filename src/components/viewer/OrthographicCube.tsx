@@ -25,3 +25,4 @@ export function OrthographicCube({
 }
 
 export default OrthographicCube;
+
