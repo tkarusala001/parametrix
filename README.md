@@ -6,7 +6,7 @@ Parametrix is an AI-powered architectural CAD editor that generates and modifies
 
 ## What it does
 
-You type a prompt. Parametrix generates a fully parametric OpenSCAD model with realistic material colors, proper structural proportions, and adjustable parameters for every dimension. The model compiles in a WebAssembly OpenSCAD runtime and renders in a 3D viewer directly in the browser. You can iterate on the model by continuing the conversation, tweaking sliders and inputs in the parameter panel, or uploading an STL file to modify an existing model.
+You type a prompt. Parametrix generates a parametric OpenSCAD model with realistic material colors, proper structural proportions, and adjustable parameters for every dimension. The model compiles in a WebAssembly OpenSCAD runtime and renders in a 3D viewer directly in the browser. You can iterate on the model by continuing the conversation, tweaking sliders and inputs in the parameter panel, or uploading an STL file to modify an existing model.
 
 The architecture prompt engine enforces real-world building conventions: walls are built to standard heights, doors and windows are cut into wall openings rather than floated in front of them, furniture faces logically, multi-story floors stack at the correct Z heights, and exterior elements align to the surfaces they belong to. Every building component is tagged so materials can be assigned independently in the viewer.
 
