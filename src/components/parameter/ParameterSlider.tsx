@@ -46,3 +46,4 @@ function ParameterSliderBase({
 }
 
 export const ParameterSlider = React.memo(ParameterSliderBase);
+
