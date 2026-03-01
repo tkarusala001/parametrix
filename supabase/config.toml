@@ -24,7 +24,7 @@ enable_anonymous_sign_ins = true
 enable_manual_linking = true
 
 [auth.email]
-enable_confirmations = false
+enable_confirmations = true
 
 [auth.external.google]
 enabled = true
