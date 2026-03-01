@@ -35,7 +35,7 @@ export const PARAMETRIC_MODELS: ModelConfig[] = [
     supportsVision: true,
   },
   {
-    id: 'anthropic/claude-sonnet-4',
+    id: 'anthropic/claude-sonnet-4.5',
     name: 'Claude Sonnet 4.5',
     description: 'Daily driver Anthropic model for reliable CAD generation',
     provider: 'Anthropic',

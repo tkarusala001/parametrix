@@ -11,7 +11,7 @@ interface ModeContextType {
 const ModeContext = createContext<ModeContextType | undefined>(undefined);
 
 export function ModeProvider({ children }: { children: ReactNode }) {
-  const [mode, setMode] = useState<Mode>("architecture");
+  const [mode, setMode] = useState<Mode>("engineering");
 
   const toggleMode = () => {
     setMode((prev) => (prev === "engineering" ? "architecture" : "engineering"));
