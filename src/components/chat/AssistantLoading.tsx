@@ -10,19 +10,15 @@ export function AssistantLoading() {
         <Avatar
           className="h-9 w-9 border bg-adam-neutral-950"
           style={
-            mode === "architecture"
-              ? { borderColor: "#C77DFF", padding: "0.15rem" }
-              : { borderColor: undefined, padding: "0.375rem" }
+            mode === 'architecture'
+              ? { borderColor: '#C77DFF', padding: '0.15rem' }
+              : { borderColor: undefined, padding: '0.375rem' }
           }
         >
           <AvatarImage
-            src={
-              mode === "architecture"
-                ? `${import.meta.env.BASE_URL}logos/parametrix-logo.svg`
-                : `${import.meta.env.BASE_URL}adam-logo.svg`
-            }
-            alt={mode === "architecture" ? "Parametrix" : "Adam"}
-            className={mode === "architecture" ? "rounded-sm object-contain" : ""}
+            src={`${import.meta.env.BASE_URL}logos/parametrix-logo.svg`}
+            alt="Parametrix"
+            className="rounded-sm object-contain"
           />
         </Avatar>
       </div>

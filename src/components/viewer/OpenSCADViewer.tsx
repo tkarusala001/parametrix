@@ -44,11 +44,21 @@ export function OpenSCADViewer() {
   const { currentMessage } = useCurrentMessage();
   const { setBlob } = useBlob();
   const { mode } = useMode();
-  const { compileScad, compileScadAsync, writeFile, isCompiling, output, isError, error } =
-    useOpenSCAD();
+  const {
+    compileScad,
+    compileScadAsync,
+    writeFile,
+    isCompiling,
+    output,
+    isError,
+    error,
+  } = useOpenSCAD();
   const { getMeshFile, hasMeshFile } = useMeshFiles();
   const [geometry, setGeometry] = useState<BufferGeometry | null>(null);
-  const [componentGeometries, setComponentGeometries] = useState<Map<string, BufferGeometry> | null>(null);
+  const [componentGeometries, setComponentGeometries] = useState<Map<
+    string,
+    BufferGeometry
+  > | null>(null);
   const [isCompilingComponents, setIsCompilingComponents] = useState(false);
   const { mutate: sendMessage } = useSendContentMutation({ conversation });
   const writtenFilesRef = useRef<Map<string, Blob>>(new Map());
@@ -79,15 +89,24 @@ export function OpenSCADViewer() {
     const compileWithFiles = async () => {
       try {
         // In architecture mode, pre-load the parts library if code uses it
-        if (isArchitecture && !archLibLoadedRef.current && scadCode.includes('architecture_parts.scad')) {
+        if (
+          isArchitecture &&
+          !archLibLoadedRef.current &&
+          scadCode.includes('architecture_parts.scad')
+        ) {
           try {
-            const response = await fetch(`${import.meta.env.BASE_URL}libraries/architecture_parts.scad`);
+            const response = await fetch(
+              `${import.meta.env.BASE_URL}libraries/architecture_parts.scad`,
+            );
             const text = await response.text();
             const blob = new Blob([text], { type: 'text/plain' });
             await writeFile('architecture_parts.scad', blob);
             archLibLoadedRef.current = true;
           } catch (err) {
-            console.error('[OpenSCAD] Error loading architecture parts library:', err);
+            console.error(
+              '[OpenSCAD] Error loading architecture parts library:',
+              err,
+            );
           }
         }
 
@@ -123,7 +142,14 @@ export function OpenSCADViewer() {
     };
 
     compileWithFiles();
-  }, [scadCode, compileScad, writeFile, getMeshFile, hasMeshFile, isArchitecture]);
+  }, [
+    scadCode,
+    compileScad,
+    writeFile,
+    getMeshFile,
+    hasMeshFile,
+    isArchitecture,
+  ]);
 
   // Process compiled output and start background component compilations
   useEffect(() => {
@@ -202,7 +228,10 @@ export function OpenSCADViewer() {
       <div className="h-full w-full">
         {geometry ? (
           <div className="h-full w-full">
-            <ThreeScene geometry={geometry} componentGeometries={componentGeometries} />
+            <ThreeScene
+              geometry={geometry}
+              componentGeometries={componentGeometries}
+            />
           </div>
         ) : (
           <>
@@ -220,9 +249,13 @@ export function OpenSCADViewer() {
         {(isCompiling || isCompilingComponents) && (
           <div className="absolute inset-0 flex items-center justify-center rounded-lg bg-adam-neutral-700/30 backdrop-blur-sm">
             <div className="flex flex-col items-center gap-3">
-              <Loader2 className={`h-6 w-6 animate-spin ${mode === 'architecture' ? 'text-[#C77DFF]' : 'text-adam-blue'}`} />
+              <Loader2
+                className={`h-6 w-6 animate-spin ${mode === 'architecture' ? 'text-[#C77DFF]' : 'text-adam-blue'}`}
+              />
               <p className="text-xs font-medium text-adam-text-primary/70">
-                {isCompilingComponents ? 'Loading materials...' : 'Compiling...'}
+                {isCompilingComponents
+                  ? 'Loading materials...'
+                  : 'Compiling...'}
               </p>
             </div>
           </div>
@@ -248,7 +281,9 @@ function FixWithAIButton({
     <div className="flex h-full flex-col items-center justify-center gap-4 p-6">
       <div className="flex flex-col items-center gap-3">
         <div className="relative">
-          <div className={`absolute inset-0 animate-ping rounded-full ${pingClass}`} />
+          <div
+            className={`absolute inset-0 animate-ping rounded-full ${pingClass}`}
+          />
           <CircleAlert className={`h-8 w-8 ${accentClass}`} />
         </div>
         <div className="text-center">
@@ -256,7 +291,7 @@ function FixWithAIButton({
             Error Compiling Model
           </p>
           <p className="mt-1 text-xs text-adam-text-primary/60">
-            {isArchitecture ? 'Parametrix' : 'Adam'} encountered an error while compiling
+            Parametrix encountered an error while compiling
           </p>
         </div>
       </div>
@@ -288,7 +323,9 @@ function FixWithAIButton({
             }
           }}
         >
-          <div className={`absolute inset-0 rounded-lg bg-gradient-to-br ${isArchitecture ? 'from-[#C77DFF]/20' : 'from-adam-blue/20'} to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100`} />
+          <div
+            className={`absolute inset-0 rounded-lg bg-gradient-to-br ${isArchitecture ? 'from-[#C77DFF]/20' : 'from-adam-blue/20'} to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100`}
+          />
           <Wrench className="h-4 w-4 transition-transform duration-300 group-hover:rotate-12" />
           <span className="relative text-sm font-medium">Fix with AI</span>
         </Button>

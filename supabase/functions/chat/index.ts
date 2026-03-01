@@ -186,8 +186,8 @@ async function generateTitleFromMessages(
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${OPENROUTER_API_KEY}`,
-        'HTTP-Referer': 'https://adam-cad.com',
-        'X-Title': 'Adam CAD',
+        'HTTP-Referer': 'https://parametrix.app',
+        'X-Title': 'Parametrix',
       },
       body: JSON.stringify({
         model: 'anthropic/claude-3.5-haiku',
@@ -230,7 +230,7 @@ async function generateTitleFromMessages(
       if (title.length > 27) title = title.substring(0, 24) + '...';
 
       // If title is empty or too short after cleanup, return null to use fallback
-      if (title.length < 2) return 'Adam Object';
+      if (title.length < 2) return 'Parametrix Object';
 
       return title;
     }
@@ -254,11 +254,11 @@ async function generateTitleFromMessages(
       .trim();
   }
 
-  return 'Adam Object';
+  return 'Parametrix Object';
 }
 
 // Outer agent system prompt (conversational + tool-using)
-const PARAMETRIC_AGENT_PROMPT = `You are Adam, an AI CAD editor that creates and modifies OpenSCAD models.
+const PARAMETRIC_AGENT_PROMPT = `You are Parametrix, an AI CAD editor that creates and modifies OpenSCAD models.
 Speak back to the user briefly (one or two sentences), then use tools to make changes.
 Prefer using tools to update the model rather than returning full code directly.
 Do not rewrite or change the user's intent. Do not add unrelated constraints.
@@ -328,7 +328,7 @@ const tools = [
 ];
 
 // Strict prompt for producing only OpenSCAD (no suggestion requirement)
-const STRICT_CODE_PROMPT = `You are Adam, an AI CAD editor that creates and modifies OpenSCAD models. You assist users by chatting with them and making changes to their CAD in real-time. You understand that users can see a live preview of the model in a viewport on the right side of the screen while you make changes.
+const STRICT_CODE_PROMPT = `You are Parametrix, an AI CAD editor that creates and modifies OpenSCAD models. You assist users by chatting with them and making changes to their CAD in real-time. You understand that users can see a live preview of the model in a viewport on the right side of the screen while you make changes.
  
 When a user sends a message, you will reply with a response that contains only the most expert code for OpenSCAD according to a given prompt. Make sure that the syntax of the code is correct and that all parts are connected as a 3D printable object. Always write code with changeable parameters. Never include parameters to adjust color. Initialize and declare the variables at the start of the code. Do not write any other text or comments in the response. If I ask about anything other than code for the OpenSCAD platform, only return a text containing '404'. Always ensure your responses are consistent with previous responses. Never include extra text in the response. Use any provided OpenSCAD documentation or context in the conversation to inform your responses.
 
@@ -1000,8 +1000,8 @@ Deno.serve(async (req) => {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${OPENROUTER_API_KEY}`,
-        'HTTP-Referer': 'https://adam-cad.com',
-        'X-Title': 'Adam CAD',
+        'HTTP-Referer': 'https://parametrix.app',
+        'X-Title': 'Parametrix',
       },
       body: JSON.stringify(requestBody),
     });
@@ -1267,8 +1267,8 @@ Deno.serve(async (req) => {
                 headers: {
                   'Content-Type': 'application/json',
                   Authorization: `Bearer ${OPENROUTER_API_KEY}`,
-                  'HTTP-Referer': 'https://adam-cad.com',
-                  'X-Title': 'Adam CAD',
+                  'HTTP-Referer': 'https://parametrix.app',
+                  'X-Title': 'Parametrix',
                 },
                 body: JSON.stringify(codeRequestBody),
               }).then(async (r) => {
@@ -1297,9 +1297,7 @@ Deno.serve(async (req) => {
               code = match[1].trim();
             }
 
-            const defaultTitle = isArchitecture
-              ? 'Parametrix Object'
-              : 'Adam Object';
+            const defaultTitle = 'Parametrix Object';
             let title =
               titleResult.status === 'fulfilled'
                 ? titleResult.value
@@ -1391,7 +1389,7 @@ Deno.serve(async (req) => {
             }
 
             const artifact: ParametricArtifact = {
-              title: content.artifact?.title || 'Adam Object',
+              title: content.artifact?.title || 'Parametrix Object',
               version: content.artifact?.version || 'v1',
               code: patchedCode,
               parameters: parseParameters(patchedCode),

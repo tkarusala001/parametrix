@@ -164,11 +164,7 @@ export function PromptView() {
                     id: newConversationId,
                     user_id: user?.id ?? '',
                   }}
-                  placeholder={
-                    mode === 'architecture'
-                      ? 'Start building with Parametrix...'
-                      : 'Start building with Adam...'
-                  }
+                  placeholder="Start building with Parametrix..."
                   model={model}
                   setModel={setModel}
                   showPromptGenerator={true}
@@ -190,4 +186,3 @@ export function PromptView() {
     </div>
   );
 }
-

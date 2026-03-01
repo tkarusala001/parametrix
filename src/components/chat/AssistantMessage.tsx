@@ -100,12 +100,8 @@ export function AssistantMessage({
               }}
             >
               <AvatarImage
-                src={
-                  mode === 'architecture'
-                    ? `${import.meta.env.BASE_URL}logos/parametrix-logo.svg`
-                    : `${import.meta.env.BASE_URL}adam-logo.svg`
-                }
-                alt={mode === 'architecture' ? 'Parametrix' : 'Adam'}
+                src={`${import.meta.env.BASE_URL}logos/parametrix-logo.svg`}
+                alt="Parametrix"
                 className={
                   mode === 'architecture' ? 'rounded-sm object-contain' : ''
                 }
@@ -274,7 +270,7 @@ function ObjectButton({
 }) {
   const [isHovered, setIsHovered] = useState(false);
   const { mode } = useMode();
-  let title = mode === 'architecture' ? 'Parametrix Object' : 'Adam Object';
+  let title = 'Parametrix Object';
   if (message.content.artifact) {
     title = message.content.artifact.title;
   }
