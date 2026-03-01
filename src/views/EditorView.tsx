@@ -20,7 +20,7 @@ export default function EditorView() {
   const [images, setImages] = useState<MessageItem[]>([]);
   const [meshUpload, setMeshUpload] = useState<MeshUploadState | null>(null);
   const [blob, setBlob] = useState<Blob | null>(null);
-  const [color, setColor] = useState<string>(mode === 'architecture' ? '#C77DFF' : '#0099EE');
+  const [color, setColor] = useState<string>(mode === 'architecture' ? '#C77DFF' : '#00A6FF');
   const [isRealView, setIsRealView] = useState(false);
   const [surfaceMaterial, setSurfaceMaterial] = useState('concrete');
   const [viewMode, setViewMode] = useState<'realistic' | 'wireframe' | 'xray'>('realistic');
