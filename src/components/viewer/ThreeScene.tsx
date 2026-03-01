@@ -377,7 +377,7 @@ export function ThreeScene({ geometry, componentGeometries }: ThreeSceneProps) {
           <OrthographicCamera
             makeDefault
             position={[-100, 100, 100]}
-            zoom={40}
+            zoom={30}
             near={0.01}
             far={1000}
           />
