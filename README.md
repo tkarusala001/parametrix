@@ -1,6 +1,6 @@
 # Parametrix
 
-![Parametrix](public/Github-Banner-Dark.png)
+
 
 Parametrix is an AI-powered architectural CAD editor that generates and modifies OpenSCAD models of buildings and structures through natural language. Describe what you want to build and Parametrix produces parametric, editable OpenSCAD code with realistic materials and accurate proportions, rendered live in the browser.
 
