@@ -88,26 +88,33 @@ export function AssistantMessage({
           <Avatar
             className="h-9 w-9 border bg-adam-neutral-950"
             style={
-              mode === "architecture"
-                ? { borderColor: "#C77DFF" }
-                : undefined
+              mode === 'architecture' ? { borderColor: '#C77DFF' } : undefined
             }
           >
-            <div style={{ padding: mode === "architecture" ? "0.15rem" : "0.6rem 0.5rem 0.5rem 0.55rem" }}>
+            <div
+              style={{
+                padding:
+                  mode === 'architecture'
+                    ? '0.15rem'
+                    : '0.6rem 0.5rem 0.5rem 0.55rem',
+              }}
+            >
               <AvatarImage
                 src={
-                  mode === "architecture"
+                  mode === 'architecture'
                     ? `${import.meta.env.BASE_URL}logos/parametrix-logo.svg`
                     : `${import.meta.env.BASE_URL}adam-logo.svg`
                 }
-                alt={mode === "architecture" ? "Parametrix" : "Adam"}
-                className={mode === "architecture" ? "rounded-sm object-contain" : ""}
+                alt={mode === 'architecture' ? 'Parametrix' : 'Adam'}
+                className={
+                  mode === 'architecture' ? 'rounded-sm object-contain' : ''
+                }
               />
             </div>
           </Avatar>
         </div>
       )}
-      <div className="w-[80%] rounded-lg bg-adam-neutral-800">
+      <div className="w-[85%] rounded-lg bg-adam-neutral-800">
         <div className="flex flex-col gap-3 p-3 text-sm text-adam-text-primary">
           {message.content.error ? (
             <span className="px-1">
@@ -280,7 +287,9 @@ function ObjectButton({
       className={cn(
         'group relative bg-black p-2 hover:bg-adam-bg-dark',
         currentMessage && currentMessage.id === message.id
-          ? mode === 'architecture' ? 'border-[#C77DFF]' : 'border-adam-blue'
+          ? mode === 'architecture'
+            ? 'border-[#C77DFF]'
+            : 'border-adam-blue'
           : 'border-gray-200/20 dark:border-gray-700',
       )}
       onClick={() => setCurrentMessage(message)}
