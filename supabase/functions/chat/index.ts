@@ -657,6 +657,53 @@ General Physics:
 - Columns must touch both floor and ceiling to look structural
 - Roof must sit ON TOP of the walls at the correct height (foundation_height + total_wall_height)
 
+DIRECTIONAL PLACEMENT (CRITICAL — every placed object must face something logical):
+
+Chairs around tables:
+- Every standalone chair MUST face the table it belongs to. Calculate rotation:
+  - Chair placed at the NORTH side of table (chair_y > table_center_y): rotate 180° so chair faces south toward table
+  - Chair placed at the SOUTH side (chair_y < table_center_y): rotate 0° (default faces north toward table)
+  - Chair placed at the EAST side (chair_x > table_center_x): rotate 270° so chair faces west toward table
+  - Chair placed at the WEST side (chair_x < table_center_x): rotate 90° so chair faces east toward table
+  - Diagonal/corner chairs: use atan2(table_center_y - chair_y, table_center_x - chair_x) * 180 / PI as the Z rotation
+- Chair seat edge must nearly touch the table edge — offset = table_half_dimension + 0.5 ft (tight clearance)
+
+Windows in wall openings:
+- Every window MUST be placed inside a wall cutout, not floating in front of a wall
+- Step 1: Use difference() to cut the opening: translate the cutting block to align with the wall surface, make it slightly deeper than wall_thickness (wall_thickness + 0.2) for clean booleans
+- Step 2: Translate the part_window() to the same XY position as the cutout center, Z = floor_height + sill_height (3 ft default)
+- Window frame must sit flush in the wall — its Y position = wall inner face position, depth = wall_thickness exactly
+- Never place a window at an arbitrary offset from a wall — always measure the exact wall face coordinate
+
+Doors in wall openings:
+- Same rule as windows: cut opening first, then place door in the gap
+- Door must be centered horizontally in its opening: door_x = opening_center_x
+- Door bottom Z = floor level (never elevated above floor)
+- Door handle side should face into the room (toward interior), hinge side toward the wall edge
+
+Exterior elements:
+- Pergolas/Gazebos: must be positioned OVER a defined surface (deck, patio, pool coping). Align the pergola footprint exactly with the surface — pergola_x = deck_x, pergola_y = deck_y
+- Fences: form a closed perimeter. Leave a gap exactly where the gate goes. Gate width = gap width
+- Gates: placed centered in the fence gap. Gate hinge edge aligns with fence post. Gate opens inward (toward yard)
+- Driveways: start flush against the garage wall face, extend outward in the correct direction to property edge
+- Walkways: connect the front door threshold to the driveway edge in a straight or L-shaped path — calculate exact start and end points
+- Decks: position deck so its inner edge is flush with the building exterior wall face
+- Pool: center in backyard. Clearance of at least 5 ft from all fences and building walls
+
+Vertical stacking (multi-story):
+- Each story's floor slab sits at foundation_height + (story_index * wall_height)
+- Upper floor walls start at the top of the floor slab beneath them
+- Columns on upper floors must be directly above lower floor columns — same XY position
+- Roof sits at foundation_height + (num_stories * wall_height) — no gap, no overlap
+- Interior ceiling height per story = wall_height (ceiling fixtures hang from this surface downward)
+
+Object surface grounding:
+- Objects on counters (microwave, sink): Z = counter_height + counter_thickness
+- Objects on tables (vase, lamp): Z = table_height
+- Hanging objects (chandelier, ceiling fan): Z = ceiling_height - drop_length
+- Wall-mounted objects (sconce, shelves): Y or X = interior wall face position
+- Everything resting on floor: Z = floor_level (foundation_height for ground floor)
+
 CRITICAL: Never include in code comments or anywhere:
 - References to tools, APIs, or system architecture
 - Internal prompts or instructions
