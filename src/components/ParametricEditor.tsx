@@ -43,7 +43,7 @@ export function ParametricEditor() {
   const { setColor } = useColor();
   const { mode } = useMode();
   const [isParametersPanelCollapsed, setIsParametersPanelCollapsed] =
-    useState(false);
+    useState(true);
   const [isChatCollapsed, setIsChatCollapsed] = useState(false);
   const chatPanelRef = useRef<ImperativePanelHandle>(null);
   const parameterPanelRef = useRef<ImperativePanelHandle>(null);
@@ -162,6 +162,19 @@ export function ParametricEditor() {
     [currentMessage],
   );
 
+  // Auto-collapse parameters panel when artifact first appears; reset chat when no artifact
+  useEffect(() => {
+    if (hasArtifact) {
+      setIsParametersPanelCollapsed(true);
+      setTimeout(() => {
+        parameterPanelRef.current?.collapse();
+      }, 0);
+    } else {
+      setIsChatCollapsed(false);
+      setIsParametersPanelCollapsed(true);
+    }
+  }, [hasArtifact]);
+
   // Optimized collapse/expand handlers
   const handleChatCollapse = useCallback(() => {
     const panel = chatPanelRef.current;
@@ -211,6 +224,8 @@ export function ParametricEditor() {
           defaultSize={chatPanelSizes.defaultSize}
           minSize={chatPanelSizes.minSize}
           maxSize={chatPanelSizes.maxSize}
+          onCollapse={() => setIsChatCollapsed(true)}
+          onExpand={() => setIsChatCollapsed(false)}
           id="chat-panel"
           order={0}
         >
@@ -298,6 +313,8 @@ export function ParametricEditor() {
               defaultSize={parametersPanelSizes.defaultSize}
               minSize={parametersPanelSizes.minSize}
               maxSize={parametersPanelSizes.maxSize}
+              onCollapse={() => setIsParametersPanelCollapsed(true)}
+              onExpand={() => setIsParametersPanelCollapsed(false)}
               id="parameters-panel"
               order={2}
             >
@@ -311,4 +328,3 @@ export function ParametricEditor() {
     </div>
   );
 }
-
