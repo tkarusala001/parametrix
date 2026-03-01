@@ -2888,3 +2888,4 @@ export function generateTriplanarUVs(
 
   geometry.setAttribute('uv', new THREE.Float32BufferAttribute(uvs, 2));
 }
+
