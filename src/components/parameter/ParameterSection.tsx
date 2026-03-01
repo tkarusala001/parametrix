@@ -574,7 +574,7 @@ export function ParameterSection() {
     selectedFormat === 'stl' ? !blob : !currentMessage?.content.artifact?.code;
 
   return (
-    <div className="h-full w-full max-w-full border-l border-gray-200/20 bg-adam-bg-secondary-dark dark:border-gray-800">
+    <div className="h-full w-full max-w-full border-l border-adam-neutral-700/20 bg-adam-bg-secondary-dark">
       {/* Header with tabs */}
       <div className="flex h-14 items-center justify-between border-b border-adam-neutral-700 bg-gradient-to-r from-adam-bg-secondary-dark to-adam-bg-secondary-dark/95 px-4 py-6">
         {showMaterialsTab ? (
@@ -749,4 +749,3 @@ export function ParameterSection() {
     </div>
   );
 }
-

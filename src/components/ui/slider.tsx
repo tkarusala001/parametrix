@@ -355,9 +355,17 @@ const Slider = React.forwardRef<
                   : 'transition-colors',
               !isDragging &&
                 !isPointerDown &&
-                (colorScheme === 'purple' ? '[@media(hover:hover)]:group-hover:bg-[#C77DFF]/50' : '[@media(hover:hover)]:group-hover:bg-sky-100/50'),
-              (isDragging || isPointerDown) && (colorScheme === 'purple' ? '!bg-[#C77DFF]/50' : '!bg-sky-200/50'),
-              isAnimating && (colorScheme === 'purple' ? '!bg-[#C77DFF]/50' : '!bg-sky-200/50'),
+                (colorScheme === 'purple'
+                  ? '[@media(hover:hover)]:group-hover:bg-[#C77DFF]/50'
+                  : '[@media(hover:hover)]:group-hover:bg-sky-100/50'),
+              (isDragging || isPointerDown) &&
+                (colorScheme === 'purple'
+                  ? '!bg-[#C77DFF]/50'
+                  : '!bg-sky-200/50'),
+              isAnimating &&
+                (colorScheme === 'purple'
+                  ? '!bg-[#C77DFF]/50'
+                  : '!bg-sky-200/50'),
             )}
           />
           {/* Default value marker */}
@@ -365,7 +373,7 @@ const Slider = React.forwardRef<
             currentValue !== defaultVal &&
             (defaultMarkerStyle === 'dot' ? (
               <div
-                className="absolute top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 cursor-pointer rounded-full bg-white opacity-60 shadow-[0_0_8px_rgba(0,0,0,0.5)] transition-all hover:h-2.5 hover:w-2.5 hover:opacity-100"
+                className="absolute top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 cursor-pointer rounded-full bg-adam-neutral-50 opacity-60 shadow-[0_0_8px_rgba(0,0,0,0.5)] transition-all hover:h-2.5 hover:w-2.5 hover:opacity-100"
                 style={{ left: `${defaultPosition}%` }}
                 onClick={handleDefaultMarkerClick}
                 title={`Reset to default (${defaultVal})`}
@@ -375,7 +383,7 @@ const Slider = React.forwardRef<
               </div>
             ) : (
               <div
-                className="absolute bottom-[2px] top-[2px] w-[2px] -translate-x-1/2 cursor-pointer rounded-full bg-white opacity-40 shadow-[0_0_8px_rgba(0,0,0,0.5)] transition-all hover:w-[4px] hover:opacity-100"
+                className="absolute bottom-[2px] top-[2px] w-[2px] -translate-x-1/2 cursor-pointer rounded-full bg-adam-neutral-50 opacity-40 shadow-[0_0_8px_rgba(0,0,0,0.5)] transition-all hover:w-[4px] hover:opacity-100"
                 style={{ left: `${defaultPosition}%` }}
                 onClick={handleDefaultMarkerClick}
                 title={`Reset to default (${defaultVal})`}
