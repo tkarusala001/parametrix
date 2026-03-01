@@ -26,7 +26,7 @@ export function AssistantLoading() {
           />
         </Avatar>
       </div>
-      <div className="flex max-w-[80%] flex-col items-center justify-center gap-2 rounded-lg bg-adam-neutral-800 p-2">
+      <div className="flex max-w-[80%] flex-col items-center justify-center gap-2 rounded-lg bg-adam-neutral-800 p-3">
         <AnimatedEllipsis color="adam-neutral" />
       </div>
     </div>

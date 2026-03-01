@@ -72,7 +72,7 @@ export function AnimatedEllipsis({
             )}
             style={{
               ...(color === 'adam-neutral' && {
-                animation: `adamNeutralPulse 1.2s ease-in-out ${(2 - i) * 0.4}s infinite`,
+                animation: `adamNeutralPulse 1.2s ease-in-out ${(2 - i) * -0.4}s infinite`,
               }),
               ...(color !== 'adam-neutral' && {
                 animationDelay: `${i * 200}ms`,
