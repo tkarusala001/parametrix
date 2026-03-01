@@ -200,3 +200,4 @@ function generateOFFUVs(geometry: THREE.BufferGeometry, scale = 0.1): void {
 
   geometry.setAttribute('uv', new THREE.Float32BufferAttribute(uvs, 2));
 }
+
