@@ -500,3 +500,4 @@ export function VisualCard({
     </div>
   );
 }
+
