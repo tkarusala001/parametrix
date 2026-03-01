@@ -71,3 +71,4 @@ self.onmessage = async (
     self.postMessage(response);
   }
 };
+
