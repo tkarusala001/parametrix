@@ -128,3 +128,4 @@ export function ImageGallery({ imageIds }: { imageIds: string[] }) {
     </div>
   );
 }
+
