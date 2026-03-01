@@ -793,7 +793,7 @@ function TextAreaChat({
                           onClick={() => handleImageRemoved(image)}
                           disabled={image.isUploading}
                           className={cn(
-                            'absolute right-[-0.50rem] top-[-0.50rem] rounded-full border border-adam-neutral-700 bg-white text-adam-neutral-300 shadow-sm transition-colors duration-200 hover:border-adam-neutral-500 hover:bg-adam-neutral-900 hover:text-adam-neutral-100',
+                            'absolute right-[-0.50rem] top-[-0.50rem] rounded-full border border-adam-neutral-700 bg-adam-neutral-900 text-adam-neutral-300 shadow-sm transition-colors duration-200 hover:border-adam-neutral-500 hover:bg-adam-neutral-900 hover:text-adam-neutral-100',
                             image.isUploading && 'opacity-50',
                           )}
                         >
@@ -817,7 +817,7 @@ function TextAreaChat({
               ? 'border-[#C77DFF] shadow-[inset_0px_0px_8px_0px_rgba(0,0,0,0.08)]'
               : 'border-adam-blue shadow-[inset_0px_0px_8px_0px_rgba(0,0,0,0.08)]'
             : 'border-adam-neutral-700 shadow-[inset_0px_0px_8px_0px_rgba(0,0,0,0.04)] hover:border-adam-neutral-500',
-          'bg-white transition-all duration-300',
+          'bg-adam-neutral-950 transition-all duration-300',
         )}
         onDragEnter={(event) => {
           if (isDragging) {
@@ -908,7 +908,7 @@ function TextAreaChat({
             >
               <Button
                 variant="outline"
-                className="flex h-8 w-8 items-center gap-2 rounded-lg border border-adam-neutral-700 bg-white p-0 text-sm text-adam-text-secondary hover:bg-adam-neutral-900"
+                className="flex h-8 w-8 items-center gap-2 rounded-lg border border-adam-neutral-700 bg-adam-neutral-950 p-0 text-sm text-adam-text-secondary hover:bg-adam-neutral-900"
                 onClick={(e) => {
                   e.stopPropagation();
                   const input = document.createElement('input');
