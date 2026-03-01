@@ -39,3 +39,4 @@ export interface MeshUploadState {
   // The actual STL file content for OpenSCAD import
   fileContent: Blob;
 }
+
