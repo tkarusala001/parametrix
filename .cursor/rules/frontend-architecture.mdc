@@ -6,7 +6,7 @@ alwaysApply: true
 ## Component Architecture
 
 ### Views (Page Components)
-- Located in `src/view/`
+- Located in `src/views/`
 - Each view represents a full page/route
 - Use React Router for navigation
 - Implement proper loading and error states
