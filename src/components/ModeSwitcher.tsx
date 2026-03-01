@@ -26,7 +26,7 @@ export function ModeSwitcher() {
         }`}
         style={
           mode === "architecture"
-            ? { backgroundColor: "#B56DF0" }
+            ? { backgroundColor: "#C77DFF" }
             : undefined
         }
       >
