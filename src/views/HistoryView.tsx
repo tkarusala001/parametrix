@@ -310,7 +310,7 @@ export function HistoryView() {
                 ))}
               </div>
             ) : filteredConversations.length === 0 ? (
-              <div className="flex h-full flex-col items-center justify-center py-8 text-gray-500">
+              <div className="flex h-full flex-col items-center justify-center py-8 text-adam-neutral-400">
                 <MessageSquare className="mb-4 h-12 w-12 opacity-50" />
                 {searchQuery ? (
                   <>
