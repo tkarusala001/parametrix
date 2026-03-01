@@ -1,35 +1,77 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from 'react';
+import { Outlet, useLocation } from 'react-router-dom';
+import { PanelLeft, Loader2 } from 'lucide-react';
 
-function App() {
-  const [count, setCount] = useState(0)
+import { Sidebar } from '@/components/Sidebar';
+import { useAuth } from '@/contexts/AuthContext';
+import { Button } from '@/components/ui/button';
+import { MeshFilesProvider } from '@/contexts/MeshFilesContext';
+
+export default function App() {
+  const { isLoading } = useAuth();
+  const location = useLocation();
+  const [isSidebarOpen, setIsSidebarOpen] = useState(
+    localStorage.getItem('sidebarOpen') !== 'false',
+  );
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
+
+  useEffect(() => {
+    // Function to check if the viewport width is mobile-sized
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 640); // 640px is the 'sm' breakpoint in Tailwind
+    };
+    // Add event listener for window resize
+    window.addEventListener('resize', checkIsMobile);
+
+    // Clean up event listener
+    return () => window.removeEventListener('resize', checkIsMobile);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('sidebarOpen', isSidebarOpen.toString());
+  }, [isSidebarOpen]);
+
+  if (isLoading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-adam-bg-dark">
+        <Loader2 className="h-8 w-8 animate-spin text-[#C77DFF]" />
+      </div>
+    );
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="h-dvh overflow-hidden">
+      {isMobile ? (
+        <div className="flex h-dvh w-full items-center justify-center bg-adam-bg-dark text-adam-text-primary">
+          Please use a desktop browser to access this app.
+        </div>
+      ) : (
+        <div className="flex h-dvh transition-all ease-in-out">
+          <Sidebar isSidebarOpen={isSidebarOpen} />
+          <div className="relative flex-1 overflow-auto bg-adam-bg-dark">
+            {/* Toggle Sidebar Button - Positioned on main content area */}
+            <Button
+              variant="ghost"
+              size="icon"
+              className={`fixed z-10 h-7 w-7 rounded-md text-adam-neutral-400 transition-all duration-300 [@media(hover:hover)]:hover:bg-adam-neutral-900 [@media(hover:hover)]:hover:text-adam-neutral-100 ${
+                isSidebarOpen ? 'left-[272px]' : 'left-20'
+              } ${
+                location.pathname === '/' && isSidebarOpen
+                  ? 'top-[2.25rem]'
+                  : 'top-3.5'
+              }`}
+              onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+            >
+              <PanelLeft className="h-4 w-4" />
+            </Button>
+            <div className="h-full bg-adam-bg-dark">
+              <MeshFilesProvider>
+                <Outlet context={{ isSidebarOpen }} />
+              </MeshFilesProvider>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
 }
-
-export default App
