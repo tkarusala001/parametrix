@@ -538,7 +538,7 @@ export function ParameterSection() {
           changeParameters(currentMessage, pendingParametersRef.current);
           pendingParametersRef.current = null;
         }
-      }, 500);
+      }, 200);
     },
     [changeParameters, currentMessage],
   );
