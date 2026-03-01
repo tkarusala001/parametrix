@@ -59,3 +59,4 @@ export type FileSystemWorkerMessageData = {
   content?: WorkspaceFile | ArrayBuffer; // Content is only necessary when writing
   type?: string; // MIME type, needed if content is ArrayBuffer
 };
+
