@@ -114,7 +114,7 @@ export function AssistantMessage({
           </Avatar>
         </div>
       )}
-      <div className="w-[85%] rounded-lg bg-adam-neutral-800">
+      <div className="w-[80%] rounded-lg bg-adam-neutral-800">
         <div className="flex flex-col gap-3 p-3 text-sm text-adam-text-primary">
           {message.content.error ? (
             <span className="px-1">
