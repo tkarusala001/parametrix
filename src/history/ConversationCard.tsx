@@ -54,7 +54,7 @@ export function ConversationCard({
         >
           <div className="min-w-0 flex-1 space-y-2 p-1 text-left">
             <div className="flex items-center gap-3">
-              <h3 className="line-clamp-1 text-wrap break-all text-base font-medium text-adam-neutral-50">
+              <h3 className="line-clamp-2 text-wrap break-all text-base font-medium text-adam-neutral-50">
                 {conversation.title}
               </h3>
             </div>
