@@ -1,7 +1,7 @@
 {
   "lint": {
     "rules": {
-      "exclude": ["no-import-prefix", "no-unversioned-import", "no-explicit-any"]
+      "exclude": ["no-import-prefix", "no-unversioned-import"]
     }
   }
 }
