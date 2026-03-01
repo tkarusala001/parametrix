@@ -6,7 +6,7 @@ type ColorContextType = {
 };
 
 export const ColorContext = createContext<ColorContextType>({
-  color: '#00A6FF',
+  color: '#0099EE',
   setColor: () => {},
 });
 
