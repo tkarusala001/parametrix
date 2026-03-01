@@ -53,7 +53,7 @@ createRoot(document.getElementById('root')!).render(
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
         <ModeProvider>
-          <TooltipProvider delayDuration={100}>
+          <TooltipProvider delayDuration={0}>
             <Toaster />
             <RouterProvider
               router={router}
