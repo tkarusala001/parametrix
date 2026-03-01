@@ -300,7 +300,7 @@ export function VisualCard({
     if (!el) return;
     const observer = new IntersectionObserver(
       ([entry]) => setIsVisible(entry.isIntersecting),
-      { rootMargin: '50px' },
+      { rootMargin: '100px' },
     );
     observer.observe(el);
     return () => observer.unobserve(el);
