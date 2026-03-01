@@ -11,7 +11,6 @@ import { supabase } from '@/lib/supabase';
 import { useQuery } from '@tanstack/react-query';
 import { ConditionalWrapper } from './ConditionalWrapper';
 import { Conversation } from '@shared/types';
-import { ModeSwitcher } from './ModeSwitcher';
 import { useMode } from '@/contexts/ModeContext';
 
 interface SidebarProps {
@@ -136,12 +135,6 @@ export function Sidebar({ isSidebarOpen }: SidebarProps) {
         </ConditionalWrapper>
       </div>
 
-      {isSidebarOpen && (
-        <div className="px-4 pb-3">
-          <ModeSwitcher />
-        </div>
-      )}
-
       <div className="flex min-h-0 flex-1 flex-col">
         <div
           className={`${isSidebarOpen ? 'px-4' : 'px-2'} flex-1 py-2 transition-all duration-300 ease-in-out`}
@@ -253,4 +246,3 @@ export function Sidebar({ isSidebarOpen }: SidebarProps) {
     </div>
   );
 }
-

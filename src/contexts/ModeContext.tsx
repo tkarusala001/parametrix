@@ -1,6 +1,6 @@
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, ReactNode } from 'react';
 
-type Mode = "engineering" | "architecture";
+type Mode = 'architecture';
 
 interface ModeContextType {
   mode: Mode;
@@ -11,11 +11,11 @@ interface ModeContextType {
 const ModeContext = createContext<ModeContextType | undefined>(undefined);
 
 export function ModeProvider({ children }: { children: ReactNode }) {
-  const [mode, setMode] = useState<Mode>("engineering");
+  const mode: Mode = 'architecture';
 
-  const toggleMode = () => {
-    setMode((prev) => (prev === "engineering" ? "architecture" : "engineering"));
-  };
+  // Mode is locked to architecture — these are intentional no-ops
+  const setMode = (_mode: Mode) => {};
+  const toggleMode = () => {};
 
   return (
     <ModeContext.Provider value={{ mode, setMode, toggleMode }}>
@@ -27,7 +27,7 @@ export function ModeProvider({ children }: { children: ReactNode }) {
 export function useMode() {
   const context = useContext(ModeContext);
   if (context === undefined) {
-    throw new Error("useMode must be used within a ModeProvider");
+    throw new Error('useMode must be used within a ModeProvider');
   }
   return context;
 }
